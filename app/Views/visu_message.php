@@ -10,7 +10,7 @@
 <body>
     <h1>visualisation des message de {nom de la comunne}</h1>
 
-    <a class="bouton" href='#'> Précédent </a>
+    <a class="bouton left" href='#'> Précédent </a>  <a class="bouton right" href='#'> Suivant </a>
     <article class="visu_message">
         <h2> Titre du message </h2>
         <p>Hanc regionem praestitutis celebritati diebus invadere parans dux ante edictus per solitudines<BR>
@@ -18,7 +18,7 @@
             praesidia descivere Romana. absque ullo egressus effectu deinde tabescebat immobilis.<p>
         
     </article>
-    <a class="bouton" href='#'> Suivant </a>
+
 
 </body>
 </html>
