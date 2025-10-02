@@ -24,7 +24,7 @@
                     <label for="off">Off</label>
                 </form> 
             </td>
-            <td> <a class="bouton" href='#'> Modifier </a> </td>
+            <td> <a class="bouton" href='<?= url_to('message_modif',1) ?>'> Modifier </a> </td>
             <td> <a class="bouton" href='#'> Supprimer </a> </td>
         </tr>
            <tr>
@@ -38,7 +38,7 @@
                     <label for="off">Off</label>
                 </form> 
             </td>
-            <td> <a class="bouton" href='#'> Modifier </a> </td>
+            <td> <a class="bouton" href='<?= url_to('message_modif',1) ?>'> Modifier </a> </td>
             <td> <a class="bouton" href='#'> Supprimer </a> </td>
         </tr>
            <tr>
@@ -52,12 +52,12 @@
                     <label for="off">Off</label>
                 </form> 
             </td>
-            <td> <a class="bouton" href='#'> Modifier </a> </td>
+            <td> <a class="bouton" href='<?= url_to('message_modif',1) ?>'> Modifier </a> </td>
             <td> <a class="bouton" href='#'> Supprimer </a> </td>
         </tr>
     </table>
 
 
-    <p><a class="bouton" href='#'> Ajout message </a></p> 
-    <p><a class="bouton" href='#'> visualisation message </a></p>
+    <p><a class="bouton" href='<?= url_to('message_ajout',1) ?>'> Ajout message </a></p> 
+    <p><a class="bouton" href='<?= url_to('visu_message',1) ?>'> visualisation message </a></p>
 <?= $this->endSection()?>

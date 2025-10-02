@@ -8,7 +8,7 @@
 
 <form method="post" action="#">
        <fieldset> 
-            <legend>Modification de message de {nom de la commune}</legend>
+            <legend>Ajout de message de {nom de la commune}</legend>
 
             <label>Message :</label>
             <textarea name="message">
