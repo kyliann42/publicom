@@ -41,3 +41,12 @@ table tbody tr:nth-child(odd) {
 .titre {
 	text-align: center;
 }
+
+table form{
+	border: none;
+	 max-width: 300px;
+    margin: 0 auto;
+    padding: 0;
+    background: #f9fafb;
+    font-size: 1em;
+}
