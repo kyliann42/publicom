@@ -32,3 +32,7 @@ color: buttontext;
 background-color: buttonface;
 text-decoration: none;
 }
+
+.titre{
+    text-align: center;
+}

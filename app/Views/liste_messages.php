@@ -7,7 +7,7 @@
 
 <?= $this->section('contenu') ?>
 
-    <h1>Liste des message de {nom de la communne}</h1>
+    <h1 class="titre">Liste des message de {nom de la communne}</h1>
     <table>
         <tr>
             <th> Message </th>
