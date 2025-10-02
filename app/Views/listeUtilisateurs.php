@@ -23,6 +23,7 @@
 
 
 <body>
+    <a href="<?=url_to('preCreate_user',$listeUtilisateurs[0]["idCommune"])?>" class='bouton'>Ajouter un Utilisateur</a>
     <?php
             //dd($listeUtilisateurs);
             $table = new \CodeIgniter\View\Table();
@@ -36,5 +37,6 @@
                 ]);
             }
             echo $table->generate();
+
             ?>
 </body>  
