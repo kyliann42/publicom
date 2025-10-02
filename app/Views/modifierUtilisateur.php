@@ -36,6 +36,12 @@
             <label for="nomCommune" >Commune </label>
             <input type="text" id="nomCommune" name="nomCommune" value="<?=$utilisateur["nomCommune"]?>"/>
 
+             <label for="login" >Login </label>
+            <input type="text" id="login" name="login" value="<?=$utilisateur["login"]?>"/>
+            
+            <label for="password" >Password </label>
+            <input type="text" id="password" name="password"/>
+
 
 
             <button type="submit">Valider Modification</button>
