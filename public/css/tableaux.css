@@ -23,3 +23,12 @@ table tbody tr {
 table tbody tr:nth-child(odd) {
 	background-color: #ffffff;
 }
+
+.bouton {
+padding: 1px 6px;
+border: 1px outset buttonborder;
+border-radius: 3px;
+color: buttontext;
+background-color: buttonface;
+text-decoration: none;
+}
