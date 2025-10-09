@@ -7,13 +7,13 @@
 <p><a class="bouton" href='<?= url_to('visu_message', 1) ?>'> visualisation message </a></p>
 
 <?php
-    $table=new \CodeIgniter\View\Table();
+$table = new \CodeIgniter\View\Table();
 
-    $table->setHeading('Titre','Contenu', 'Visibilité');
+$table->setHeading('Titre', 'Contenu', 'Visibilité');
 
-    foreach ($messageListe as $message ){
-        $table->addRow($message['TITRE'],$message['CONTENU']);
-    }
+foreach ($messageListe as $message) {
+    $table->addRow($message['TITRE'], $message['CONTENU']);
+}
 
 ?>
 
@@ -22,51 +22,32 @@
         <th> Message </th>
         <th> Visibilité </th>
     </tr>
-    <tr>
-        <td> Message 1 </td>
-        <td>
-            <form method="post" action="#">
-                <input type="radio" id="on" name="on_off" value="on" />
-                <label for="on">On</label>
 
-                <input type="radio" id="off" name="on_off" value="off" checked />
-                <label for="off">Off</label>
-            </form>
-        </td>
-        <td> <a class="bouton" href='<?= url_to('message_modif', 1) ?>'> Modifier </a> </td>
-        <td> <a class="bouton" href='<?= url_to('visu_message', 1) ?>'> Visualisation </a> </td>
-        <td> <a class="bouton" href='#'> Supprimer </a> </td>
-    </tr>
-    <tr>
-        <td> Message 2 </td>
-        <td>
-            <form method="post" action="#">
-                <input type="radio" id="on" name="on_off" value="on" />
-                <label for="on">On</label>
+    <?php foreach ($messageListe as $message) { ?>
+        <tr>
+            <td> <?= $message['TITRE'] ?> </td>
+            <td>
+                <form method="post" action="#">
+                    <?php if ($message['ON_OFF'] == 1) { ?>
+                        <input type="radio" id="on" name="on_off" value="on" checked />
+                        <label for="on">On</label>
 
-                <input type="radio" id="off" name="on_off" value="off" checked />
-                <label for="off">Off</label>
-            </form>
-        </td>
-        <td> <a class="bouton" href='<?= url_to('message_modif', 1) ?>'> Modifier </a> </td>
-        <td> <a class="bouton" href='<?= url_to('visu_message', 1) ?>'> Visualisation </a> </td>
-        <td> <a class="bouton" href='#'> Supprimer </a> </td>
-    </tr>
-    <tr>
-        <td> Message 3 </td>
-        <td>
-            <form method="post" action="#">
-                <input type="radio" id="on" name="on_off" value="on" checked />
-                <label for="on">On</label>
+                        <input type="radio" id="off" name="on_off" value="off" />
+                        <label for="off">Off</label>
+                    <?php } else { ?>
+                        <input type="radio" id="on" name="on_off" value="on" />
+                        <label for="on">On</label>
 
-                <input type="radio" id="off" name="on_off" value="off" />
-                <label for="off">Off</label>
-            </form>
-        </td>
-        <td> <a class="bouton" href='<?= url_to('message_modif', 1) ?>'> Modifier </a> </td>
-        <td> <a class="bouton" href='<?= url_to('visu_message', 1) ?>'> Visualisation </a> </td>
-        <td> <a class="bouton" href='#'> Supprimer </a> </td>
-    </tr>
+                        <input type="radio" id="off" name="on_off" value="off" checked />
+                        <label for="off">Off</label>
+                    <?php } ?>
+                </form>
+            </td>
+            <td> <a class="bouton" href='<?= url_to('message_modif', $message['ID']) ?>'> Modifier </a> </td>
+            <td> <a class="bouton" href='<?= url_to('visu_message', $message['ID']) ?>'> Visualisation </a> </td>
+            <td> <a class="bouton" href='<?= url_to('message_delete') ?>'> Supprimer </a> </td>
+        </tr>
+    <?php } ?>
 </table>
 
 <?= $this->endSection() ?>
