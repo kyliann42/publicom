@@ -2,7 +2,7 @@
 
 <?= $this->section('contenu') ?>
 
-<h1 class="titre">Liste des message de {nom de la communne}</h1>
+<h1 class="titre">Liste des message de <?= $commune['NOM'] ?> </h1>
 <p><a class="bouton" href='<?= url_to('message_ajout', 1) ?>'> Ajout message </a></p>
 <p><a class="bouton" href='<?= url_to('visu_message', 1) ?>'> visualisation message </a></p>
 

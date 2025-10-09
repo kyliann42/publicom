@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<?= $this->extend('layout') ?>
+<?= $this->section('contenu') ?>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Welcome Publicom</title>
-</head>
 
-<body>
     <img src="doc/map.jpg" alt="map" style="width:600px;height:400px;">
     <h1>Carte des panneaux de (nom de la commune)</h1>
 
@@ -14,6 +9,5 @@
     <p>Coordonnées : 48256115°N 514862°W</p>
     <p>Rue Charles de gaulle</p>
 
-</body>
 
-</html>
+<?= $this->endSection() ?>
