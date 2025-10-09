@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Welcome Publicom</title>
-</head>
-
-<body>
+<?= $this->extend('layout') ?>
+<?= $this->section('contenu') ?>
 
     <h1>Modification panneau de (nom de la commune)</h1>
 
@@ -16,6 +9,4 @@
 
     <button type="button">Valider </button>
 
-</body>
-
-</html>
+<?= $this->endSection() ?>

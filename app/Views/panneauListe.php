@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Welcome Publicom</title>
-</head>
-
-<body>
+<?= $this->extend('layout') ?>
+<?= $this->section('contenu') ?>
 
     <h1>liste des panneaux de (commune)</h1>
 
@@ -41,6 +34,4 @@
     <button type="button">Afficher en tant que carte</button>
     <button type="button">Ajouter panneau</button>
 
-</body>
-
-</html>
+<?= $this->endSection() ?>
