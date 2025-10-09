@@ -12,14 +12,24 @@ class Message extends BaseController
     public function liste($communeId)
     {
         $messageModel=model('MessageModel');
+        $communeModel=model('CommuneModel');
 
-        return view('liste_messages',['messageListe' =>$messageModel->findAll()]);
+        $messageListe=$messageModel->where('ID_COMMUNEMESSAGE', $communeId)->findAll();
+        $commune=$communeModel->find($communeId);
+
+        return view('liste_messages',['messageListe' =>$messageListe, 'commune' =>$commune]);
     }
 
     //page de visualisation des message
     public function visualisation($messageId)
     {
-        return view('visu_message',['messageId' =>$messageId]);
+        $messageModel=model('MessageModel');
+        $communeModel=model('CommuneModel');
+
+        $message=$messageModel->find($messageId);
+        $commune=$communeModel->find($message['ID_COMMUNEMESSAGE']);
+
+        return view('visu_message',['message' =>$message, 'commune'=>$commune]);
     }
 
     //création de message
@@ -35,6 +45,7 @@ class Message extends BaseController
     //modification des message
         public function modif($messageId)
     {
+
         return view('modif_message',['messageId' =>$messageId]);
     }
     public function update()
