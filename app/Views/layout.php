@@ -17,8 +17,6 @@
     <nav>
         <?php if (isset($communePage)) { ?>
             <ul class="main-nav">
-                <li><a href=""> Création Commune</a></li>
-                <li><a href="">Modification Commune</a></li>
 
                 <li class="push"><a href="">Déconnexion</a></li>
             </ul>
