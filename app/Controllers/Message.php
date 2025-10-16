@@ -16,7 +16,7 @@ class Message extends BaseController
 
         $messageListe=$messageModel->where('ID_COMMUNEMESSAGE', $communeId)->findAll();
 
-        return view('liste_messages',['messageListe' =>$messageListe, 'commune' =>$communeModel->find($communeId)]);
+        return view('liste_messages',['messageListe' =>$messageListe, 'commune' =>$communeModel->find($communeId),'isAdmin'=>true]);
     }
 
     //page de visualisation des message
@@ -28,7 +28,7 @@ class Message extends BaseController
         $message=$messageModel->find($messageId);
         $commune=$communeModel->find($message['ID_COMMUNEMESSAGE']);
 
-        return view('visu_message',['message' =>$message, 'commune'=>$commune]);
+        return view('visu_message',['message' =>$message, 'commune'=>$commune, 'isAdmin'=>true]);
     }
 
     //création de message
@@ -36,7 +36,7 @@ class Message extends BaseController
     {
         $communeModel=model('Commune');
 
-        return view('ajout_message',['commune' =>$communeModel->find($communeId)]);
+        return view('ajout_message',['commune' =>$communeModel->find($communeId), 'isAadmin'=>true]);
     }
     public function create()
     {
@@ -56,7 +56,7 @@ class Message extends BaseController
         ];
 
         $messageModel->insert($data);
-        return redirect()->route('liste_messages',[$this->request->getPost('idCommune')]);
+        return redirect()->route('liste_messages',[$this->request->getPost('idCommune'), 'isAdmin'=>true]);
 
     }
 
@@ -69,7 +69,7 @@ class Message extends BaseController
         $message=$messageModel->find($messageId);
         $commune=$communeModel->find($message['ID_COMMUNEMESSAGE']);
 
-        return view('modif_message',['message' =>$message,'commune'=>$commune]);
+        return view('modif_message',['message' =>$message,'commune'=>$commune, 'isAdmin'=>true]);
     }
     public function update()
     {
@@ -87,7 +87,7 @@ class Message extends BaseController
         ];
 
         $messageModel->update($this->request->getPost('idMessage'), $data);
-        return redirect()->route('liste_messages',[$this->request->getPost('idCommune')]);
+        return redirect()->route('liste_messages',[$this->request->getPost('idCommune'), 'isAdmin'=>true]);
         
     }
 
@@ -97,7 +97,7 @@ class Message extends BaseController
         $messageModel=model('MessageModel');
         $messageModel->delete($this->request->getPost('idMessage'));
         
-        return redirect()->route('liste_messages',[$this->request->getPost('idCommune')]);
+        return redirect()->route('liste_messages',[$this->request->getPost('idCommune'), 'isAdmin'=>true]);
     }
 
 }
