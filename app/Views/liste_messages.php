@@ -36,7 +36,6 @@ foreach ($messageListe as $message) {
 
                     <input type="radio" id="off" name="on_off" value="0" <?php if ($message['ON_OFF'] == 0) {echo 'checked';} ?> />
                     <label for="off">Off</label>
-                    <!-- le bouton valider ne ressemble pas aux autres bouton, à changer -->
                     <button class="bouton" type="submit">Changer</button>
 
                 </form>
@@ -48,7 +47,6 @@ foreach ($messageListe as $message) {
                 <form method="post" action='<?= url_to('message_delete') ?>'>
                     <input name="idMessage" type="hidden" value="<?= $message['ID'] ?>" />
                     <input name="idCommune" type="hidden" value="<?= $commune['ID'] ?>" />
-                    <!-- le bouton supprimer ne ressemble pas aux autres bouton, à changer -->
                     <button class="bouton" type="submit">Supprimer</button>
                 </form>
             </td>
