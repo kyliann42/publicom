@@ -57,8 +57,15 @@ class Utilisateur extends BaseController
 
     public function create()
     {
-        dd($this->request->getPost('ID_UTILISATEURCOMMUNE'));
-        return redirect()->to('listes-des-utilisateurs-1');
+        #Fonctionnelle (rajouter if si param vide)
+        
+        $model=model('Utilisateur');
+        //dd($this->request->getPost());
+        $model->insert($this->request->getPost());
+        
+        $numCommune=$this->request->getPost("ID_UTILISATEURCOMMUNE");
+        //dd($numCommune);
+        return redirect()->to('listes-des-utilisateurs-'.$numCommune);
     }
 
     public function preUpdate($idUtilisateur)

@@ -12,7 +12,7 @@ class Utilisateur extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ["ID_UTILISATEURCOMMUNE","NOM","PRENOM","IDENTIFIANT","MOTDEPASSE"];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
