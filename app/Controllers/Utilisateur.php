@@ -9,9 +9,20 @@ class Utilisateur extends BaseController
 {
     public function auth()
     {
-        dd($this->request->getPost());
-
-        return;
+        $model=model('Admin');
+        $log=$model->isAdmin($this->request->getPost('user_login'),$this->request->getPost('user_password'));
+        if (count($log)!=0){
+            return redirect("listeCommunes");
+        }
+        else{
+            $mode2=model('Utilisateur');
+            $log2=$mode2->isUser($this->request->getPost('user_login'),$this->request->getPost('user_password'));
+            if (count($log2)){
+                $communeId=$log2[0];
+                return view("communeAccueil",$communeId);
+            }
+        }
+        return redirect()->back();
     }
     public function reads($numCommune)
     {
@@ -27,7 +38,7 @@ class Utilisateur extends BaseController
             "idCommune"=>"2"]
         ];
         
-        return view("listeUtilisateurs.php",["listeUtilisateurs"=>$data]);
+        return view("listeUtilisateurs.php",["listeUtilisateurs"=>$data,"idCommune"=>$numCommune]);
     }
     public function preCreate($numCommune)
     {
