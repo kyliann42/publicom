@@ -27,6 +27,7 @@ class Utilisateur extends BaseController
     }
 
     public function reads($numCommune){
+        #Fonctionnel
         $model=model('Utilisateur');
         $log=$model->usersInCommune($numCommune);
         //dd($log);
@@ -46,14 +47,17 @@ class Utilisateur extends BaseController
     }
 
     public function preCreate($numCommune){
-        $data=
-            ["nomCommune"=>"albainc"];
-        
-        return view("ajoutUtilisateur.php",["commune"=>$data]);
+        #Fonctionnel
+        $model=model('Commune');
+        $log=$model->userCommune($numCommune);
+        /*$data=
+            ["nomCommune"=>"albainc"];*/
+        return view("ajoutUtilisateur.php",["commune"=>$log[0],"ID_UTILISATEURCOMMUNE"=>$numCommune]);
     }
 
     public function create()
     {
+        dd($this->request->getPost('ID_UTILISATEURCOMMUNE'));
         return redirect()->to('listes-des-utilisateurs-1');
     }
 
