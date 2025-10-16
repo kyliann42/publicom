@@ -88,13 +88,16 @@ class Message extends BaseController
 
         $messageModel->update($this->request->getPost('idMessage'), $data);
         return redirect()->route('liste_messages',[$this->request->getPost('idCommune')]);
-        //à faire : modification de message dans la base de donnée + redirection vers la liste des message
+        
     }
 
     //suppresion des message
     public function delete()
     {
-        //à faire : suppression de message dans la base de donnée + redirection vers la liste des message
+        $messageModel=model('MessageModel');
+        $messageModel->delete($this->request->getPost('idMessage'));
+        
+        return redirect()->route('liste_messages',[$this->request->getPost('idCommune')]);
     }
 
 }
