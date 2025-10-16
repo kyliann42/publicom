@@ -12,7 +12,7 @@ class Message extends BaseController
     public function liste($communeId)
     {
         $messageModel=model('MessageModel');
-        $communeModel=model('CommuneModel');
+        $communeModel=model('Commune');
 
         $messageListe=$messageModel->where('ID_COMMUNEMESSAGE', $communeId)->findAll();
 
@@ -23,7 +23,7 @@ class Message extends BaseController
     public function visualisation($messageId)
     {
         $messageModel=model('MessageModel');
-        $communeModel=model('CommuneModel');
+        $communeModel=model('Commune');
 
         $message=$messageModel->find($messageId);
         $commune=$communeModel->find($message['ID_COMMUNEMESSAGE']);
@@ -34,7 +34,7 @@ class Message extends BaseController
     //création de message
     public function ajout($communeId)
     {
-        $communeModel=model('CommuneModel');
+        $communeModel=model('Commune');
 
         return view('ajout_message',['commune' =>$communeModel->find($communeId)]);
     }
@@ -64,7 +64,7 @@ class Message extends BaseController
         public function modif($messageId)
     {
         $messageModel=model('MessageModel');
-        $communeModel=model('CommuneModel');
+        $communeModel=model('Commune');
 
         $message=$messageModel->find($messageId);
         $commune=$communeModel->find($message['ID_COMMUNEMESSAGE']);
