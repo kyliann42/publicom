@@ -21,7 +21,7 @@ $routes->post('ajout-panneau', 'Panneau::create', ['as' => 'panneauCreate']);
 $routes->get('modif-panneau-(:num)', 'Panneau::modif/$1', ['as' => 'panneauModif']);
 $routes->post('modif-panneau', 'Panneau::update', ['as' => 'panneauUpdate']);
 
-$routes->post('suppr-panneau', 'Panneau::delete', ['as' => 'panneauSuppr']);
+$routes->get('suppr-panneau-(:num)', 'Panneau::delete/$1', ['as' => 'panneauSuppr']);
 
 
 //CRUD communes
