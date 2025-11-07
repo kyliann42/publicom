@@ -1,30 +1,41 @@
 <?= $this->extend('layout') ?>
 <?= $this->section('contenu') ?>
 
-    <h1>Modification panneau de (nom de la commune)</h1>
+<h1>Modifier un panneau de la commune de (commune)</h1>
 
-    <?php if (empty($panneau) || ! is_array($panneau)): ?>
-        <p>Le panneau demandé est introuvable.</p>
-        <p><a href="<?= url_to('panneauListe') ?>">Retour à la liste</a></p>
-    <?php else: ?>
+<?php if (empty($panneau)): ?>
 
-        <?php if (session()->getFlashdata('error')): ?>
-            <div class="error"><?= esc(session()->getFlashdata('error')) ?></div>
-        <?php endif; ?>
+    <p>Le panneau demandé n’existe pas.</p>
+    <p><a href="<?= url_to('panneauListe') ?>">Retour à la liste</a></p>
 
-        <form action="<?= url_to('panneauUpdate') ?>" method="post">
-            <?= csrf_field() ?>
-            <input type="hidden" name="id" value="<?= esc($panneau['ID'] ?? 0) ?>">
+<?php else: ?>
+    
+    <form action="<?= url_to('panneauUpdate') ?>" method="post">
 
-            <p>Numéro : <input type="text" name="numero" id="numero" value="<?= esc(old('numero', $panneau['NUMERO'] ?? '')) ?>"></p>
-            <p>Latitude : <input type="text" name="latitude" id="latitude" value="<?= esc(old('latitude', $panneau['LATITUDE'] ?? '')) ?>"></p>
-            <p>Longitude : <input type="text" name="longitude" id="longitude" value="<?= esc(old('longitude', $panneau['LONGITUDE'] ?? '')) ?>"></p>
+        <input type="hidden" name="id" value="<?= esc($panneau['ID']) ?>">
+        <p>
+            <label for="numero">Numéro :</label>
+            <input type="text" name="numero" id="numero"
+                   value="<?= esc(old('numero', $panneau['NUMERO'])) ?>">
+        </p>
 
-            <button type="submit">Valider</button>
-            <a href="<?= url_to('panneauListe') ?>"><button type="button">Annuler</button></a>
-        </form>
+        <p>
+            <label for="latitude">Latitude :</label>
+            <input type="text" name="latitude" id="latitude"
+                   value="<?= esc(old('latitude', $panneau['LATITUDE'])) ?>">
+        </p>
 
-    <?php endif; ?>
+        <p>
+            <label for="longitude">Longitude :</label>
+            <input type="text" name="longitude" id="longitude"
+                   value="<?= esc(old('longitude', $panneau['LONGITUDE'])) ?>">
+        </p>
+
+        <button type="submit">Valider</button>
+        <a href="<?= url_to('panneauListe') ?>">Annuler</a>
+    </form>
+
+<?php endif; ?>
 
 <?= $this->endSection() ?>
 

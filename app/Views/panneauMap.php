@@ -1,19 +1,17 @@
 <?= $this->extend('layout') ?>
 <?= $this->section('contenu') ?>
 
+<h1>Carte des panneaux de la commune de (commune)</h1>
 
 
-<h1>Carte des panneaux de (nom de la commune)</h1>
+<img src="doc/map.jpg" alt="Carte de la commune" style="width:600px;height:400px;">
 
-
-<img src="doc/map.jpg" alt="map" style="width:600px;height:400px;">
-
-<?php if (isset($panneaux) && is_array($panneaux) && count($panneaux) > 0): ?>
+<?php if (!empty($panneaux)): ?>
     <ul>
-        <?php foreach ($panneaux as $p): ?>
+        <?php foreach ($panneaux as $panneau): ?>
             <li>
-                <strong>Panneau numéro</strong> <?= esc($p['NUMERO'] ?? '') ?> <br>
-                <strong>Coordonnées :</strong> <?= esc($p['LATITUDE'] ?? '') ?>, <?= esc($p['LONGITUDE'] ?? '') ?>
+                Panneau n° <?= esc($panneau['NUMERO']) ?><br>
+                Coordonnées : <?= esc($panneau['LATITUDE']) ?>, <?= esc($panneau['LONGITUDE']) ?>
             </li>
         <?php endforeach; ?>
     </ul>

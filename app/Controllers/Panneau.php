@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use CodeIgniter\HTTP\ResponseInterface;
 
 class Panneau extends BaseController
 {
@@ -18,71 +17,64 @@ class Panneau extends BaseController
         $panneaux = model('PanneauModel')->findAll();
         return view('panneauMap', ['panneaux' => $panneaux]);
     }
-    
+
     public function ajout(int $communeId)
     {
         return view('PanneauAjout', ['communeId' => $communeId]);
     }
 
-    public function modif(int $panneauxId): string
+    public function modif(int $id)
     {
-        $panneau = model('PanneauModel')->find($panneauxId);
+        $panneau = model('PanneauModel')->find($id);
         return view('PanneauModif', ['panneau' => $panneau]);
     }
 
     public function update()
     {
         $id = $this->request->getPost('id');
+
         if (empty($id)) {
             return redirect()->to(url_to('panneauListe'));
         }
 
-        $numero = $this->request->getPost('numero');
-        $latitude = $this->request->getPost('latitude');
-        $longitude = $this->request->getPost('longitude');
-
-        $panneauData = [
-            'NUMERO'   => $numero,
-            'LATITUDE' => $latitude,
-            'LONGITUDE'=> $longitude,
+        $data = [
+            'NUMERO'   => $this->request->getPost('numero'),
+            'LATITUDE' => $this->request->getPost('latitude'),
+            'LONGITUDE'=> $this->request->getPost('longitude'),
         ];
 
-        model('PanneauModel')->update((int)$id, $panneauData);
+        model('PanneauModel')->update($id, $data);
 
         return redirect()->to(url_to('panneauListe'));
     }
 
     public function create()
     {
-        $numero = trim($this->request->getPost('numero'));
-        $latitude = trim($this->request->getPost('latitude'));
+        $numero    = trim($this->request->getPost('numero'));
+        $latitude  = trim($this->request->getPost('latitude'));
         $longitude = trim($this->request->getPost('longitude'));
         $idCommune = $this->request->getPost('ID');
 
-        if ($numero === '' || $latitude === '' || $longitude === '') {
-            return redirect()->back()->withInput()->with('error', 'Veuillez remplir tous les champs.');
-        }
-
-        $panneauData = [
-            'NUMERO'                => $numero,
-            'LATITUDE'              => $latitude,
-            'LONGITUDE'             => $longitude,
-            'ID_COMMUNEPANNEAUX'    => $idCommune,
+        $data = [
+            'NUMERO'             => $numero,
+            'LATITUDE'           => $latitude,
+            'LONGITUDE'          => $longitude,
+            'ID_COMMUNEPANNEAUX' => $idCommune,
         ];
 
-        model('PanneauModel')->insert($panneauData);
+        model('PanneauModel')->insert($data);
 
         return redirect()->to(url_to('panneauListe'));
     }
 
-    public function delete($panneauxId = null)
+    public function delete($id = null)
     {
-        $id = $panneauxId ?? $this->request->getPost('id');
-        if (empty($id)) {
-            return redirect()->to(url_to('panneauListe'));
+        $id = $id ?? $this->request->getPost('id');
+
+        if (!empty($id)) {
+            model('PanneauModel')->delete($id);
         }
 
-        model('PanneauModel')->delete((int)$id);
         return redirect()->to(url_to('panneauListe'));
     }
 }
