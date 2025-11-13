@@ -3,8 +3,21 @@
 
 <h1>Carte des panneaux de la commune de (commune)</h1>
 
+<div 
+<?php 
+if (isset($_POST['submit'])) {
+    $latitude = $_POST['latitude'];
+    $longitude = $_POST['longitude'];
 
-<img src="doc/map.jpg" alt="Carte de la commune" style="width:600px;height:400px;">
+?>
+<iframe src="https://maps.google.com/maps?&q=<?php echo $panneau['LATITUDE'].','.$panneau['LONGITUDE'] ?>&output=embed"
+    width="100%" height="500"
+    ></iframe>
+<?php } ?>
+
+
+
+
 
 <?php if (!empty($panneaux)): ?>
     <ul>
