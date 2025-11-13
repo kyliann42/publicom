@@ -7,30 +7,32 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class Utilisateur extends BaseController
 {
-    public function auth()
-    #Fonctionnel
-    {
+    public function auth(){
+        $session = session();
+        $session->set(['isLogIn' => False]);
         $model=model('Admin');
         $log=$model->isAdmin($this->request->getPost('user_login'),$this->request->getPost('user_password'));
         if (count($log)!=0){
+            $session->set(['isLogIn' => true]);
             return redirect("listeCommunes");
         }
         else{
             $model2=model('Utilisateur');
             $log2=$model2->isUser($this->request->getPost('user_login'),$this->request->getPost('user_password'));
             if (count($log2)){
+                $session->set(['isLogIn' => true]);
                 $communeId=$log2[0];
                 return view("communeAccueil",$communeId);
             }
-            else{
-                
-                $session = session();
-                $session->setFlashdata('errorMessage', 'Echec auth');
+            //else{
+               // $session->set(['isLogIn' => false]);
+                //$session = session();
+                //$session->setFlashdata('errorMessage', 'Echec auth');
                 //$_SESSION['error'] = 'Echec Auth';
                 //$session->markAsFlashdata('error');
                 //dd($_SESSION['error']);
 
-            }
+           // }
         }
         
         return redirect()->back()/*->with('errorMessage',"Echec auth")*/;
