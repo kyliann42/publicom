@@ -24,8 +24,8 @@
             <input type="text" id="codePostal" name="CODEPOSTAL" value="<?= $commune['CODEPOSTAL'] ?>"><br><br>
             
             <label for="nom">Éditer la description </label>
-            <input type="text" id="description" name="DESCRIPTION" value="<?= $commune['DESCRIPTION'] ?>"><br><br>
             <input type="text" name="message" id="message" value="" style="height: 400px; width: 500px;" onclick="this.value=''" />
+            <input type="text" id="description" name="DESCRIPTION" value="<?= $commune['DESCRIPTION'] ?>"><br><br>
                 
                 <input type="submit" value="Valider">
                 

@@ -13,21 +13,18 @@
 <body>
     <div class="container">
         <div class="commune-row">
-           <form method="get">
-            <input type="hidden" name="ID" value="<?= $commune["ID"]?>">
+           <form>
             
-                <input type="text" name="message" id="message" value="" style="height: 400px; width: 500px;" onclick="this.value=''" />
-
-                <label for="nom">Éditer nom </label>
-                <input type="text" id="nom" name="NOM" value="<?= $commune['NOM'] ?>"/><br><br>
-
-                <label for="nom">Éditer le code code Postal</label>
-                <input type="text" id="codePostal" name="CODEPOSTAL" value="<?= $commune['CODEPOSTAL'] ?>"><br><br>
-
-                <label for="nom">Éditer la description </label>
-                <input type="text" id="description" name="DESCRIPTION" value="<?= $commune['DESCRIPTION'] ?>"><br><br>
-                
-                <input type="submit" value="Valider">
+            
+            <label for="nom">nom </label>
+            <label type="text" id="nom" name="NOM" value="<?= $communes['NOM'] ?>"><br><br>
+            
+            <label for="nom">code Postal</label>
+            <label type="text" id="codePostal" name="CODEPOSTAL" value="<?= $communes['CODEPOSTAL'] ?>"><br><br>
+            
+            <label for="nom">description </label>
+            <label type="text" id="description" name="DESCRIPTION" value="<?= $communes['DESCRIPTION'] ?>"><br><br>
+            <label type="text" name="message" id="message" value="" style="height: 400px; width: 500px;" onclick="this.value=''">
                 
             </form>
 

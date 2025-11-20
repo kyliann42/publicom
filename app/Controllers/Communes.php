@@ -17,12 +17,20 @@ class Communes extends BaseController
         ]);
     }
 
-    public function accueil($communeID)
+    public function accueil()
     {
-        $communeModel = model('Commune');
-        $communes = $communeModel->find();
 
-        return view('communes/afficherCommune',['communeID' => $communeID]);
+        $communeModel = model('Commune');
+        $commune = $communeModel->find();
+        //dd($commune);
+        return view('communes/afficherCommune', [
+        'commune' => [
+        'NOM' => $commune['NOM'],
+        'CODEPOSTAL' => $commune['CODEPOSTAL'],
+        'DESCRIPTION' => $commune['DESCRIPTION']
+    ]
+]);
+
     }
 
     public function creation()
