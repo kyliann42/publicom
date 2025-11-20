@@ -26,21 +26,20 @@ class Communes extends BaseController
         return view('creationCommunes');
     }
 
+
+
+
     public function create()
     
     {
     $communeModel = new \App\Models\Commune();
-    /*$data= [
-        $this->request->getPost('NOM'),
-        $this->request->getPost('CODEPOSTAL'),
-        $this->request->getPost('DESCRIPTION')
-        
-        
-    ];*/
+ 
     $communeModel->insert($this->request->getPost());
     return redirect()->to('liste-communes');
 
     }
+
+
     public function modif( $communeID): string
     {
         $communeModel = model('Commune');
@@ -61,17 +60,27 @@ class Communes extends BaseController
         ];
         $communeModel->update($communeID);
         return view('communesAccueil',$commune);
-
+    }
+        
+        
+     public function delete($communeID)
+    {
+        $communeModel = model('Commune');
+        $commune = $communeModel->find($communeID);
+        $communeModel->delete($communeID);
+    return redirect()->to('liste-communes');
 
     }
 
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
 
