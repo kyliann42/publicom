@@ -25,7 +25,7 @@ $routes->get('categorie/messages/(:num)', 'Categorie::messages/$1', ['as' => 'ca
 
 //ROUTE PANNEAUX
 
-$routes->get('liste-panneau', 'Panneau::liste', ['as' => 'panneauListe']);
+$routes->get('liste-panneaux', 'Panneau::liste', ['as' => 'panneauListe']);
 
 $routes->get('map-panneau', 'Panneau::map', ['as' => 'panneauMap']);
 
