@@ -47,7 +47,14 @@ if ($message['ALIGNEMENT']=="droite"){
 
 
 <!-- les bouton suivant et précédent ne fonctionne pas , à modifier -->
-<a class="bouton left" href='#'> Précédent </a> <a class="bouton right" href='#'> Suivant </a>
+ <?php 
+    if ($message['ID']>1) {
+
+     ?> <a class="bouton left" href='<?=url_to('preSuiv_message', $message['ID'])  ?>'> Message précédent </a> 
+
+     <?php }?>
+
+     <a class="bouton right" href=' '> Message Suivant </a>
 
 <article class="article">
     <h2 class="titre"> <?= $message['TITRE'] ?></h2>
