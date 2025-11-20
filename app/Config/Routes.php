@@ -101,4 +101,4 @@ $routes->get('commune-accueil-(:num)','Communes::accueil/$1',['as'=>'communeAccu
     $routes->post('modif-categorie', 'Categories::update', ['as' => 'categorie_update']); // traitement du formulaire
 
     //Delete
-    $routes->post('suppr-categorie', 'Categories::delete', ['as' => 'categorie_delete']); 
+    $routes->post('suppr-categorie', 'Categories::delete', ['as' => 'categorie_delete']);
