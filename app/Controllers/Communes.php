@@ -16,7 +16,7 @@ class Communes extends BaseController
             'listeCommunes' => $communes
         ];
 
-        return view('listeCommunes', ['communePage'=>true,'listeCommunes' => $communes]);
+        return view('communes/listeCommunes', ['communePage'=>true,'listeCommunes' => $communes]);
     }
 
 
