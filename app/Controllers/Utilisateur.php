@@ -86,7 +86,15 @@ class Utilisateur extends BaseController
         
         $model=model('Utilisateur');
         //dd($this->request->getPost());
-        $model->insert($this->request->getPost());
+        $data=[
+            "PRENOM"=>$this->request->getPost('PRENOM'),
+            "NOM"=>$this->request->getPost('NOM'),
+            "ID_UTILISATEURCOMMUNE"=>$this->request->getPost('ID_UTILISATEURCOMMUNE'),
+            "IDENTIFIANT"=>$this->request->getPost('IDENTIFIANT'),
+            "MOTDEPASSE"=>password_hash($this->request->getPost('MOTDEPASSE'),PASSWORD_DEFAULT)
+        ];
+
+        $model->insert($data);
         
         $numCommune=$this->request->getPost("ID_UTILISATEURCOMMUNE");
         //dd($numCommune);
