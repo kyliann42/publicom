@@ -1,32 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+<?= $this->extend('layout') ?>
 
-<head>
-    <meta charset="UTF-8">
-    <style>
-        button {
-            padding-right: 150px;
-        }
-      
-    </style>
-</head>
+
+
+ <?= $this->section('contenu') ?>
 <body>
     <div class="container">
         <div class="commune-row">
-           <form>
+           
+            <h1>Commune : </h1>  
+            <h2><?= $commune['NOM'] ?><br><br>
+            
+            <label for="nom">Code Postal</label>
+            <h2><?= $commune['CODEPOSTAL'] ?><br><br>
             
             
-            <label for="nom">nom </label>
-            <label type="text" id="nom" name="NOM" value="<?= $communes['NOM'] ?>"><br><br>
+            <h1>Description :
+            <p><?= $commune['DESCRIPTION'] ?><br><br>
             
-            <label for="nom">code Postal</label>
-            <label type="text" id="codePostal" name="CODEPOSTAL" value="<?= $communes['CODEPOSTAL'] ?>"><br><br>
+
+
             
-            <label for="nom">description </label>
-            <label type="text" id="description" name="DESCRIPTION" value="<?= $communes['DESCRIPTION'] ?>"><br><br>
-            <label type="text" name="message" id="message" value="" style="height: 400px; width: 500px;" onclick="this.value=''">
-                
-            </form>
 
         </div>
-    </body>
+    </div>
+</body>
+  <?= $this->endSection() ?> 
