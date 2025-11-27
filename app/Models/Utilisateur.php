@@ -64,4 +64,10 @@ class Utilisateur extends Model
         ->where("utilisateur.ID",$idUser)
         ->findAll();
     }
+    public function getUserMdp($login){
+        return $this 
+        ->select('*')
+        ->where("IDENTIFIANT", $login)
+        ->first();
+    }
 }
