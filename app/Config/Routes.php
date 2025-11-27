@@ -5,10 +5,13 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index');	
+$routes->get('/', 'Home::index');
+
+/*login*/
+$routes->get('login','Utilisateur::login',['as'=>'login_user']);
 $routes->post('auth','Utilisateur::auth' ,['as' =>'auth_user']);
 // logout
-$routes->post('/logout',"Utilisateur::logout",['as' =>'logout_user']);
+$routes->get('/logout',"Utilisateur::logout",['as' =>'logout_user']);
 
 	
 
@@ -47,8 +50,13 @@ $routes->post('create-commune','Communes::create',['as' =>'createCommune']);
 $routes->get('modification-communes-(:num)', 'Communes::modif/$1', ['as' => 'modificationCommune']);
 $routes->post('update-communes', 'Communes::update', ['as' => 'updateCommunes']);
 
+
+$routes->get('supprimer-commune-(:num)','Communes::delete',['as'=>'supprimerCommune']);
+
+//Gérer la colone en particulier pour admin
+$routes->get('commune-accueil-(:num)','Communes::accueil/$1',['as'=>'communeAccueil']);
+
 $routes->post('supprimer-communes','Communes::delete',['as'=>'supprimerCommune']);
-$routes->get('communes-accueil-(:num)','Communes::accueil/$1',['as'=>'communesAccueil']);
 
 //Route Utilisateur 
 

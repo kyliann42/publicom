@@ -3,75 +3,95 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use CodeIgniter\HTTP\ResponseInterface;
 
 class Communes extends BaseController
 {
     public function liste()
     {
-        $communeModel = new \App\Models\Commune();
-        $communes = $communeModel-> findAll();
+        $communeModel = model('Commune');
+        $communes = $communeModel->findAll();
 
-        $data = [
+        return view('communes/listeCommunes', [
+            'communePage' => true,
             'listeCommunes' => $communes
-        ];
-
-        return view('listeCommunes', ['communePage'=>true,'listeCommunes' => $communes]);
+        ]);
     }
 
+    
 
     public function creation()
-    
     {
-        return view('creationCommunes');
+        return view('communes/creationCommunes');
     }
 
     public function create()
-    
-    {
-    $communeModel = new \App\Models\Commune();
-    /*$data= [
-        $this->request->getPost('NOM'),
-        $this->request->getPost('CODEPOSTAL'),
-        $this->request->getPost('DESCRIPTION')
-        
-        
-    ];*/
-    $communeModel->insert($this->request->getPost());
-    return redirect()->to('liste-communes');
-
-    }
-    public function modif( $communeID): string
     {
         $communeModel = model('Commune');
-        $commune = $communeModel-> find($communeID);
-        //dd($commune);
-        return view('communeAccueil',$commune);
+        $communeModel->insert($this->request->getPost());
+        return redirect()->to('liste-communes');
     }
 
-    
-    public function update($communeID){
+    public function modif($communeID)
+    {
         $communeModel = model('Commune');
+        $commune = $communeModel->find($communeID);
 
+        if (empty($commune)) {
+            return redirect()->to('liste-communes');
+        }
+
+        return view('communes/communeAccueil', [
+            'communePage' => true,
+            'commune' => $commune
+        ]);
+    }
+
+    public function update()
+    {
+        $communeModel = model('Commune');
+        //dd($this->request->getPost('ID'));             
         $data = [
-            'NOM' => $this->request->getPost('NOM'),
+            'NOM'=> $this->request->getPost('NOM'),
             'CODEPOSTAL' => $this->request->getPost('CODEPOSTAL'),
-            'DESCRIPTION'=>$this->request->getPost('DESCRIPTION')
-
+            'DESCRIPTION'=> $this->request->getPost('DESCRIPTION'),
         ];
-        $communeModel->update($communeID);
-        return view('communesAccueil',$commune);
+        // dd($data);
+        $communeModel->update($this->request->getPost('ID'), $data);
 
+        return redirect()->to('liste-communes');
+    }
 
+    public function delete()
+    {
+        $communeModel = model('Commune');
+        $communeModel->delete($this->request->getPost('CommuneId'));
+        return redirect()->to('liste-communes');
     }
 
 
+    
+    public function accueil($communeId)
+    {
+    $communeModel = model('Commune');
+    $commune = $communeModel->find($communeId);
 
-
-
-
-
-
-
+    return view('communes/afficherCommune', [
+        'commune' => $commune
+    ]);
+    }
 }
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
 
