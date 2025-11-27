@@ -44,16 +44,8 @@ class MessageModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function message_exist($idMessage,$idCommune){
-            $this->where('ID',$idMessage);
-            $this->where('ID_COMMUNEMESSAGE',$idCommune);
-            $query = $this->get('message');
-            if ($query->num_rows() > 0){
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
+    public function message_maxId(){
+        
+    }
 
 }

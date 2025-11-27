@@ -75,6 +75,7 @@ $routes->get('communes-accueil-(:num)','Communes::accueil/$1',['as'=>'communesAc
 	//Read
 	$routes->get('liste-messages-(:num)', 'Message::liste/$1', ['as' => 'liste_messages']); 
 	$routes->get('visu-message-(:num)', 'Message::visualisation/$1', ['as' => 'visu_message']);
+	$routes->get('visu-message/(:num)/(:bool)', 'Message::preSuiv/$1/$2', ['as' => 'preSuiv_message']);
 
 	//Create
 	$routes->get('ajout-message-(:num)', 'Message::ajout/$1', ['as' => 'ajout_message']);
