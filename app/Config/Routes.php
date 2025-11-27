@@ -57,7 +57,6 @@ $routes->get('commune-accueil-(:num)','Communes::accueil/$1',['as'=>'communeAccu
 $routes->post('supprimer-communes','Communes::delete',['as'=>'supprimerCommune']);
 $routes->get('communes-accueil-(:num)','Communes::accueil/$1',['as'=>'communesAccueil']);
 
-
 //Route Utilisateur 
 
 	//Create
