@@ -43,18 +43,21 @@ if ($message['ALIGNEMENT']=="droite"){
     }
 </style>
 
+<?php if (session()->getFlashdata('msg')){ ?>
+    <div >
+        <?= session()->getFlashdata('msg') ?>
+    </div>
+<?php } ?>
+
+
 <h1>Visualisation des message de <?= $commune['NOM'] ?></h1>
 
 
 <!-- les bouton suivant et précédent ne fonctionne pas , à modifier -->
- <?php 
-    if ($message['ID']>1) {
 
-     ?> <a class="bouton left" href='<?=url_to('preSuiv_message', $message['ID'])  ?>'> Message précédent </a> 
+<a class="bouton left" href='<?=url_to('preSuiv_message', $message['ID'],0)  ?>'> Message précédent </a> 
 
-     <?php }?>
-
-     <a class="bouton right" href=' '> Message Suivant </a>
+<a class="bouton right" href='<?= url_to('preSuiv_message', $message['ID'],1) ?> '> Message Suivant </a>
 
 <article class="article">
     <h2 class="titre"> <?= $message['TITRE'] ?></h2>

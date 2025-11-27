@@ -50,8 +50,13 @@ $routes->post('create-commune','Communes::create',['as' =>'createCommune']);
 $routes->get('modification-communes-(:num)', 'Communes::modif/$1', ['as' => 'modificationCommune']);
 $routes->post('update-communes', 'Communes::update', ['as' => 'updateCommunes']);
 
-$routes->post('supprimer-communes','Communes::delete',['as'=>'supprimerCommune']);
-$routes->get('communes-accueil-(:num)','Communes::accueil/$1',['as'=>'communesAccueil']);
+
+$routes->get('supprimer-commune-(:num)','Communes::delete/$1',['as'=>'supprimerCommune']);
+
+//Gérer la colone en particulier pour admin
+$routes->get('commune-accueil-(:num)','Communes::accueil/$1',['as'=>'communeAccueil']);
+
+
 
 //Route Utilisateur 
 
@@ -78,6 +83,7 @@ $routes->get('communes-accueil-(:num)','Communes::accueil/$1',['as'=>'communesAc
 	//Read
 	$routes->get('liste-messages-(:num)', 'Message::liste/$1', ['as' => 'liste_messages']); 
 	$routes->get('visu-message-(:num)', 'Message::visualisation/$1', ['as' => 'visu_message']);
+	$routes->get('presuiv-message/(:num)/(:num)', 'Message::preSuiv/$1/$2', ['as' => 'preSuiv_message']);
 
 	//Create
 	$routes->get('ajout-message-(:num)', 'Message::ajout/$1', ['as' => 'ajout_message']);
