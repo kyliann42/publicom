@@ -8,7 +8,8 @@ class Panneau extends BaseController
 {
     public function liste()
     {
-        $panneaux = model('PanneauModel')->findAll();
+        $communeId = session()->get('IdCommune') ?? ($_SESSION['IdCommune'] ?? null);
+        $panneaux = model('PanneauModel')->where('ID_COMMUNEPANNEAUX', $communeId)->findAll();
 
         return view('Panneaux/panneauListe', [
             'panneauListe' => $panneaux,

@@ -24,7 +24,7 @@
     }
     ?>
 
-    <h1>Liste des panneaux de (commune)</h1>
+    <h1>Liste des panneaux de <?=$_SESSION['IdCommune']?></h1>
 
     <?= $table->generate(); ?>
 
