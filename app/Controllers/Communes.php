@@ -12,6 +12,9 @@ class Communes extends BaseController
         if (isset($_SESSION['IdCommune'])){
             unset($_SESSION['IdCommune']);
         }
+        if (isset($_SESSION['NomCommune'])){
+            unset($_SESSION['NomCommune']);
+        }
         $communeModel = model('Commune');
         $communes = $communeModel->findAll();
 
@@ -80,7 +83,8 @@ class Communes extends BaseController
     //dd($_SESSION['IdCommune']);
     $communeModel = model('Commune');
     $commune = $communeModel->find($communeId);
-
+    $session->set(['NomCommune'=>$commune['NOM']]);
+    //dd($_SESSION['NomCommune']);
     return view('communes/afficherCommune', [
         'commune' => $commune
     ]);
