@@ -22,8 +22,13 @@
             </ul>
         <?php } else { ?>
             <ul class="main-nav">
+<<<<<<< HEAD
                 <li><a href="<?= url_to('panneauListe') ?>"> Liste des panneaux</a></li>
 
+=======
+                <li><a href="<?= url_to('panneauListe',1) ?>"> Liste des panneaux</a></li>
+                <li><a href="<?= url_to('liste_messages',1) ?>">Liste des messages</a></li>
+>>>>>>> 0f9ce9d3d3fd1d210edd67d6a531c2a75656c00c
                 <li><a href="<?= url_to('categories_liste') ?>">Liste des catégories</a></li>
                 
                 <?php if (isset($isAdmin)) {?>

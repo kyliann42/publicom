@@ -51,5 +51,11 @@ class Admin extends Model
         ->where("MOTDEPASSE", $password)
         ->findAll();
     }
+      public function getAdminMdp($login){
+        return $this 
+        ->select("MOTDEPASSE")
+        ->where("IDENTIFIANT", $login)
+        ->first();
+    }
 }
  
