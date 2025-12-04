@@ -86,9 +86,8 @@ class Communes extends BaseController
     return view('communes/afficherCommune', [
         'commune' => $commune
     ]);
-   
-
-}
+    }
+    
 }
 
 
