@@ -8,6 +8,10 @@ class Communes extends BaseController
 {
     public function liste()
     {
+        $session=session();
+        if (isset($_SESSION['IdCommune'])){
+            unset($_SESSION['IdCommune']);
+        }
         $communeModel = model('Commune');
         $communes = $communeModel->findAll();
 
