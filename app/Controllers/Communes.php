@@ -49,13 +49,12 @@ class Communes extends BaseController
     public function update()
     {
         $communeModel = model('Commune');
-        //dd($this->request->getPost('ID'));             
         $data = [
             'NOM'=> $this->request->getPost('NOM'),
             'CODEPOSTAL' => $this->request->getPost('CODEPOSTAL'),
             'DESCRIPTION'=> $this->request->getPost('DESCRIPTION'),
         ];
-        // dd($data);
+        
         $communeModel->update($this->request->getPost('ID'), $data);
 
         return redirect()->to('liste-communes');
@@ -78,7 +77,9 @@ class Communes extends BaseController
     return view('communes/afficherCommune', [
         'commune' => $commune
     ]);
-    }
+   
+
+}
 }
 
 
