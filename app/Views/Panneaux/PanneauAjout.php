@@ -1,7 +1,7 @@
 <?= $this->extend('layout') ?>
 <?= $this->section('contenu') ?>
 
-<h1>Ajouter un panneau à la commune de (commune)</h1>
+<h1>Ajouter un panneau à la commune de <?=$_SESSION['NomCommune']?></h1>
 
 <form action="<?= url_to('panneauCreate') ?>" method="post">
     <input type="hidden" name="ID" value="<?= esc($_SESSION['IdCommune'] ?? 0) ?>">

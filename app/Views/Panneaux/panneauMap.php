@@ -27,7 +27,7 @@
 }
 </style>
 
-<h1>Carte des panneaux de la commune de (commune)</h1>
+<h1>Carte des panneaux de la commune de <?=$_SESSION['NomCommune']?></h1>
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>

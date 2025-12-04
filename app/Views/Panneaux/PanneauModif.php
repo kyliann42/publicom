@@ -1,7 +1,7 @@
 <?= $this->extend('layout') ?>
 <?= $this->section('contenu') ?>
 
-<h1>Modifier un panneau de la commune de (commune)</h1>
+<h1>Modifier un panneau de la commune de <?=$_SESSION['NomCommune']?></h1>
 
 
 <form action="<?= url_to('panneauUpdate') ?>" method="post">
