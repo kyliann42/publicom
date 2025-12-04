@@ -80,11 +80,9 @@ class Communes extends BaseController
     {
     $session=session();
     $session->set(['IdCommune'=>$communeId]);
-    //dd($_SESSION['IdCommune']);
     $communeModel = model('Commune');
     $commune = $communeModel->find($communeId);
     $session->set(['NomCommune'=>$commune['NOM']]);
-    //dd($_SESSION['NomCommune']);
     return view('communes/afficherCommune', [
         'commune' => $commune
     ]);
