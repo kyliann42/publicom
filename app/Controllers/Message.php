@@ -103,9 +103,14 @@ class Message extends BaseController
             'fond' => [
                 'label' => 'Image File',
                 'rules' => [
-                    'uploaded[fond]',
                     'is_image[fond]',
-                    'mime_in[fond,image/jpg,image/jpeg,image/gif,image/png,image/webp]'
+                    'mime_in[fond,image/jpg,image/jpeg,image/gif,image/png,image/webp]',
+                    'ext_in[fond,png,jpg,gif]'
+                ],
+                        'errors' => [
+                    'uploaded' => 'Veuillez sélectionner une image.',
+                    'is_image' => 'Le fichier doit être une image valide.',
+                    'mime_in'  => 'Formats autorisés : JPG, PNG ou WEBP.',
                 ],
             ],
         ];
@@ -121,9 +126,9 @@ class Message extends BaseController
 
         if ($this->validateData([], $isUploaded)) {
             if (! $this->validateData([], $validationRule)) {
-                $error = $this->validator->getErrors();
-                return view('message/ajout_message', ['commune' =>  $communeModel->find($this->request->getPost('idCommune')), 'isAdmin' => true, 'errors' => $error]);
+                return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
             } else {
+            
                 $img = $this->request->getFile('fond');
 
                 $fileName = $img->getRandomName();
@@ -150,8 +155,8 @@ class Message extends BaseController
                     return redirect()->back()->withInput()->with('errors', $messageModel->errors());
                 }
                 return redirect()->route('liste_messages', [$this->request->getPost('idCommune')]);
-            }
-        } else {
+            } 
+       } else {
             $data = [
                 'ID_COMMUNEMESSAGE' => $this->request->getPost('idCommune'),
                 'TITRE' => $this->request->getPost('titre'),
@@ -166,7 +171,9 @@ class Message extends BaseController
 
             ];
 
-            $messageModel->insert($data);
+            if ($messageModel->insert($data)===false){
+                    return redirect()->back()->withInput()->with('errors', $messageModel->errors());
+                }
             return redirect()->route('liste_messages', [$this->request->getPost('idCommune')]);
         }
     }
@@ -201,6 +208,11 @@ class Message extends BaseController
                     'is_image[fond]',
                     'mime_in[fond,image/jpg,image/jpeg,image/gif,image/png,image/webp]'
                 ],
+                        'errors' => [
+                    'uploaded' => 'Veuillez sélectionner une image.',
+                    'is_image' => 'Le fichier doit être une image valide.',
+                    'mime_in'  => 'Formats autorisés : JPG, PNG ou WEBP.',
+                ],
             ],
         ];
 
@@ -216,9 +228,7 @@ class Message extends BaseController
 
         if ($this->validateData([], $isUploaded)) {
             if (! $this->validateData([], $validationRule)) {
-
-                $error = $this->validator->getErrors();
-                return view('message/modif_message', ['message' => $message, 'commune' => $commune, 'isAdmin' => true, 'errors' => $error]);
+                return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
             }
 
 
@@ -246,8 +256,10 @@ class Message extends BaseController
                 'FOND' => new File($filepath),
             ];
 
-            $messageModel->update($this->request->getPost('idMessage'), $data);
-            return redirect()->route('liste_messages', [$this->request->getPost('idCommune')]);
+
+            if ($messageModel->update($this->request->getPost('idMessage'), $data)===false){
+                    return redirect()->back()->withInput()->with('errors', $messageModel->errors());
+                }
         } else {
             $data = [
                 'TITRE' => $this->request->getPost('titre'),
@@ -259,7 +271,9 @@ class Message extends BaseController
                 'TAILLETITRE' => $this->request->getPost('tailleTitre'),
             ];
 
-            $messageModel->update($this->request->getPost('idMessage'), $data);
+            if ($messageModel->update($this->request->getPost('idMessage'), $data)===false){
+                    return redirect()->back()->withInput()->with('errors', $messageModel->errors());    
+            }
             return redirect()->route('liste_messages', [$this->request->getPost('idCommune')]);
         }
     }
