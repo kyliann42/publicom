@@ -27,9 +27,9 @@ class PanneauModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = ['NUMERO' => 'required|decimal|max_length[10]',
+    protected $validationRules      = ['NUMERO' => 'decimal|max_length[10]',
                                         'LATITUDE' => 'required|decimal|max_length[8]',
-                                        'LONGITUDE' => 'required|decimal|max_length[8]',];
+                                        'LONGITUDE' => 'decimal|max_length[8]',];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
