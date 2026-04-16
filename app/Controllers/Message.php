@@ -162,7 +162,6 @@ class Message extends BaseController
                 'FOND' => $this->request->getPost('fond'),
                 'TAILLECONTENU' => $this->request->getPost('tailleTexte'),
                 'TAILLETITRE' => $this->request->getPost('tailleTitre'),
-                'PUBLIE' => $this->request->getPost('publie'),
 
             ];
 
@@ -268,11 +267,7 @@ class Message extends BaseController
     {
         $messageModel = model('MessageModel');
 
-        $data = [
-            'PUBLIE' => $this->request->getPost('publie')
-        ];
-
-        $messageModel->update($this->request->getPost('idMessage'), $data);
+        $messageModel->update($this->request->getPost('idMessage'));
         return redirect()->route('liste_messages', [$this->request->getPost('idCommune')]);
     }
 
