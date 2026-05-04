@@ -26,7 +26,6 @@
                 <li><a href="<?= url_to('panneauListe',$_SESSION['IdCommune']) ?>"> Liste des panneaux</a></li>
                 <li><a href="<?= url_to('liste_messages',$_SESSION['IdCommune']) ?>">Liste des messages</a></li>
 
-                <li><a href="<?= url_to('categories_liste') ?>">Liste des catégories</a></li>
                 
                 <?php if ($session->get('isAdmin')) {?>
                     <li><a href="<?= url_to('read_users', $_SESSION['IdCommune']) ?>">Liste des utilisateurs</a></li>;
