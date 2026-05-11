@@ -79,7 +79,7 @@
     </h1>
     <form method="post" action="<?=url_to("auth_user")?>">
     
-        <label for="nom" >Tah le tessst </label>
+        <label for="nom" >Login </label>
         <input type="text" id="login" name="user_login" />
             
             
