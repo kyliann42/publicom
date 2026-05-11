@@ -7,7 +7,7 @@
 <section>
 <a href="<?= url_to('creationCommune') ?>" class="bouton">Création Commune</a>
     <?php $table = new \CodeIgniter\View\Table();
-    $table-> setHeading(['Nom','Modifier','Supprimer','Commune Accueil']);
+    $table-> setHeading(['Nom','Modifier','Supprimer','Commune Accueil','Test']);
 
     if (session()->getFlashData('msg')!==null){
         echo'<p class="danger">'.session()->getFlashData('msg').'<p>';
